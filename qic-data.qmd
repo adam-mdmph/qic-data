@@ -1,0 +1,137 @@
+---
+title: "SVS QIC: QI Toolkit - Data"
+Author: "Angela Kim MD and Adam Johnson MD, MPH"
+---
+
+# The Role of Data in Quality Improvement
+
+::: columns
+::: {.column width="45%"}
+The modern quality improvement practices have initially been influenced by the continuous improvement in the automotive industry. These practices have been adopted in the healthcare system to deliver safe, consistent, and effective care to patients. Qualitative and quantitative data can be used to answer questions, monitor changes, and inform decision-making within a healthcare system (Figure 1). Use of data in quality improvement differ from traditional research with the expectation to assess results in shorter intervals and to incorporate existing evidence correlated with high-quality care into practice rather than posing new evidence.
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+::: {style="background-color: #D3D3D3"}
+**Figure 1**
+
+Data in Quality Improvement? Measuring and tracking data in quality improvement can improve patient care at a various system levels by:
+
+1.  Identifying priorities of healthcare and selecting areas for change
+2.  Monitoring existing systems and changes secondary to intervention
+3.  Defining success of intervention and whether implemented intervention was responsible for the change
+:::
+:::
+:::
+
+# Types of Measures in Quality Improvement
+
+::: columns
+::: {.column width="45%"}
+A healthcare system is comprised of multiple factors and sources that affect outcome. Similarly, multiple data measures are required to understand the performance of a complex system and monitor quality improvement. The Donabedian model classifies measures to assess and compare the quality of healthcare systems in forms of outcome, process, structure, and balancing measures.
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+::: {style="background-color: #D3D3D3"}
+**Figure 2**
+
+*Outcome Measures* Evaluate the impact of healthcare provision on the status of patients and populations
+
+*Process Measures* Evaluate quality of the method used to deliver the desired outcome
+
+*Structure Measures* Evaluate the capacity of the environment, service, and provision of care
+
+*Balancing Measures* Evaluate the unintended consequences of the change that can be positive or negative
+:::
+:::
+:::
+
+# Sources of Data in Quality Improvement
+
+Data used to assess healthcare quality are available from various sources including administrative data, registries, patient medical records, patient surveys and interviews, and direct observation. The selection of the data source depends on the types of measures required to evaluate and monitor quality improvement interventions and the quality of the data from various information systems.
+
++---------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+| Data Type                                                                                                                             | Advantages                                                                                                                              | Disadvantages                                                                              |
++=======================================================================================================================================+=========================================================================================================================================+============================================================================================+
+| **Administrative Data**                                                                                                               | -   Available Electronically                                                                                                            | -   Quality of data dependent on accuracy of documentation, classification, and collection |
+|                                                                                                                                       |                                                                                                                                         |                                                                                            |
+| Individual user level data collected from claims, encounter, admission, and provider systems                                          | -   Available for a population of patients across various payers                                                                        | -   Limited clinical information                                                           |
+|                                                                                                                                       |                                                                                                                                         |                                                                                            |
+|                                                                                                                                       | -   Comarpable with univorm coding systems and practices                                                                                | -   Timeliness with lag between data entry and access                                      |
+|                                                                                                                                       |                                                                                                                                         |                                                                                            |
+|                                                                                                                                       | -   Less costly compared to patient medical records and registry databases                                                              |                                                                                            |
++---------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+| **Registries**                                                                                                                        | -   Provides epidemiological information that can be used to calculate incidence rates, risks, monitor trends in incidence and outcomes | -   Costly to participate                                                                  |
+|                                                                                                                                       |                                                                                                                                         |                                                                                            |
+| Collection of clinical data to assess clinical performance and quality of care as a part of a larger regional or national data system | -   Can be used as a benchmark and for comparisons                                                                                      | -   Quality of data dependent on accuracy of documentation, classification and collection  |
++---------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+
+It is important to consider the types of measures to be extracted from the data source and the quality of the data. The data may vary in accessibility, availability, accuracy, completeness, consistency and usability across various data sources. (Adapted from Vavra 2023 J Vasc Surg Vasc Insights)
+
+# Data Visualization
+
+::: columns
+::: {.column width="15%"}
+![](icons/noun-pareto-diagram-626189.png)
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="75%"}
+**Pareto Chart** 
+
+A Pareto chart is a bar chart composed of various factors that contribute to an overall effect arranged in the order from the largest to smallest contribution to the effect. It identifies and allows concentration of improvement on the “vital few” factors that have the largest contribution to the effect and “useful many” factors that have relatively smaller contribution to the effect.
+
+:::
+:::
+
+::: columns
+::: {.column width="15%"}
+![](icons/noun-flow-chart-33372.png)
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="75%"}
+**Driver Diagram** 
+
+A diagram that displays identified "primary or secondary drivers" or contributors and relationship between them in relation to the overall aim of the project
+:::
+:::
+
+::: columns
+::: {.column width="15%"}
+![](icons/noun-line-chart-418910.png)
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="75%"}
+**Run chart** 
+
+A graph that depicts the current performance of a process and monitors whether interventions lead to improvement
+:::
+:::
+
+::: columns
+::: {.column width="15%"}
+![](icons/noun-fishbone-chart-630751.png)
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="75%"}
+**Cause and Effect Diagram** 
+
+A fishbone diagram that identifies contributors to certain effect or outcome and examines the relationship of cases to the effect and to each other
+:::
+:::

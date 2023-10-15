@@ -1,0 +1,69 @@
+---
+title: "Case Study: Reducing Readmission"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Examples of Relevant Measures
+
++-----------------------+----------------------------------+---------------------------+
+| Measure Type          | Example                          | Where data could be found |
++=======================+==================================+===========================+
+| **Outcome Measure**   | -   Length of Stay               | -   Administrative data   |
+|                       |                                  |                           |
+|                       | -   Cost                         | -   Hospital Financials   |
++-----------------------+----------------------------------+---------------------------+
+| **Process Measure**   | -   Discharge summary completion | -   Direct observation    |
+|                       |                                  |                           |
+|                       | -   Medication Reconciliation    | -   EMR Chart Review      |
++-----------------------+----------------------------------+---------------------------+
+| **Structure Measure** | -   Number of case managers      | -   HR database           |
++-----------------------+----------------------------------+---------------------------+
+| **Balancing Measure** | -   Readmission                  | -   Registry data         |
++-----------------------+----------------------------------+---------------------------+
+
+# Pareto Chart
+
+A Pareto chart is a bar chart composed of various factors that contribute to an overall effect arranged in the order from the largest to smallest contribution to the effect. It identifies and allows concentration of improvement on the "vital few" factors that have the largest contribution to the effect and "useful many" factors that have relatively smaller contribution to the effect.
+
+The dataset for a Pareto chart can be create in table format with headings of contributing factors to an overall effect, magnitude of each factor, percentage of the total each factor represents, and cumulative percentage for each factor.
+
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+| Delay Type                                                                                         | Count   | \%      | Cum%  |
++====================================================================================================+=========+=========+=======+
+| Delay in securing transportation to or placement in planned discharge disposition                  | 76      | 46      | 46    |
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+| Delay in coordinating discharge planning with allied healthcare workers, patient, patient's family | 33      | 20      | 66    |
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+| Delay in receiving services or equipment for discharge                                             | 24      | 14      | 80    |
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+| Delay in recognizing discharge needs                                                               | 17      | 10      | 90    |
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+| Delay in diagnostic tests or consultation service                                                  | 10      | 6       | 96    |
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+| Completion or exacerbation of comorbidities                                                        | 5       | 4       | 100   |
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+| **Total**                                                                                          | **165** | **100** |       |
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+
+The Pareto chart can be created manually or using a software including R with qcc package. The horizontal axis (X) is labeled with the factors contributing to the overall effect in order of largest to smallest. The left vertical axis (Y) is labeled with the unit of comparison from 0 to the total. The right vertical axis is labeled as cumulative percentage from 0% to 100%.
+
+The magnitude of the effect is depicted using a bar chart using the unit on the left vertical axis. The cumulative percentage is demonstrated using a line graph from 0% to 100%. The "vital few" factors are identified by the factors that contribute to 80% of the cumulative percentage.
+
+```{r}
+options(repos = list(CRAN="http://cran.rstudio.com/"))
+install.packages("qcc")
+library("qcc")
+df <- data.frame(delay.type=c('A', 'B', 'C', 'D', 'E', 'F'))
+df$frequency = c(76, 33, 24, 17, 10, 5)
+df
+
+pareto.chart(df$frequency,
+             main='Pareto Chart',
+             xlab='Delay Type',
+             col=heat.colors(length(df$frequency))
+)
+
+```
