@@ -1,0 +1,14 @@
+{
+  "hash": "f32dd378c35e20a503f4647847b13840",
+  "result": {
+    "markdown": "---\ntitle: \"SVS QIC: QI Toolkit - Data\"\nformats: \n   html: default\n   pptx: default\n---\n\n\n# This is a Quarto website.\n\nTo learn more about Quarto websites visit <https://quarto.org/docs/websites>.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
