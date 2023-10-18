@@ -84,10 +84,9 @@ It is important to consider the types of measures to be extracted from the data 
 :::
 
 ::: {.column width="75%"}
-**Pareto Chart** 
+**Pareto Chart**
 
-A Pareto chart is a bar chart composed of various factors that contribute to an overall effect arranged in the order from the largest to smallest contribution to the effect. It identifies and allows concentration of improvement on the “vital few” factors that have the largest contribution to the effect and “useful many” factors that have relatively smaller contribution to the effect.
-
+A Pareto chart is a bar chart composed of various factors that contribute to an overall effect arranged in the order from the largest to smallest contribution to the effect. It identifies and allows concentration of improvement on the "vital few" factors that have the largest contribution to the effect and "useful many" factors that have relatively smaller contribution to the effect.
 :::
 :::
 
@@ -100,7 +99,7 @@ A Pareto chart is a bar chart composed of various factors that contribute to an 
 :::
 
 ::: {.column width="75%"}
-**Driver Diagram** 
+**Driver Diagram**
 
 A diagram that displays identified "primary or secondary drivers" or contributors and relationship between them in relation to the overall aim of the project
 :::
@@ -115,7 +114,7 @@ A diagram that displays identified "primary or secondary drivers" or contributor
 :::
 
 ::: {.column width="75%"}
-**Run chart** 
+**Run chart**
 
 A graph that depicts the current performance of a process and monitors whether interventions lead to improvement
 :::
@@ -123,14 +122,14 @@ A graph that depicts the current performance of a process and monitors whether i
 
 ::: columns
 ::: {.column width="15%"}
-![](icons/noun-fishbone-chart-630751.png)
+![](icons/noun-fishbone-diagram-5110202.png)
 :::
 
 ::: {.column width="10%"}
 :::
 
 ::: {.column width="75%"}
-**Cause and Effect Diagram** 
+**Cause and Effect Diagram**
 
 A fishbone diagram that identifies contributors to certain effect or outcome and examines the relationship of cases to the effect and to each other
 :::
