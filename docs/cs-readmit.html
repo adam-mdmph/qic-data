@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,6 +94,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -102,9 +109,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">SVS QIC: QI Toolkit</span>
     </a>
@@ -116,17 +123,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./cs-readmit.html" rel="" target="" aria-current="page">
- <span class="menu-text">Case Study: Reducing Readmission</span></a>
+    <a class="nav-link active" href="./cs-readmit.html" aria-current="page"> 
+<span class="menu-text">Case Study: Reducing Readmission</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -140,7 +147,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#examples-of-relevant-measures" id="toc-examples-of-relevant-measures" class="nav-link active" data-scroll-target="#examples-of-relevant-measures">Examples of Relevant Measures</a></li>
-  <li><a href="#pareto-chart" id="toc-pareto-chart" class="nav-link" data-scroll-target="#pareto-chart">Pareto Chart</a></li>
+  <li><a href="#pareto-chart" id="toc-pareto-chart" class="nav-link" data-scroll-target="#pareto-chart"><strong>Pareto Chart</strong></a>
+  <ul class="collapse">
+  <li><a href="#i-description" id="toc-i-description" class="nav-link" data-scroll-target="#i-description"><em>I) Description</em></a></li>
+  <li><a href="#ii-background-for-measure" id="toc-ii-background-for-measure" class="nav-link" data-scroll-target="#ii-background-for-measure"><em>II) Background for measure</em></a></li>
+  <li><a href="#iii-instructions" id="toc-iii-instructions" class="nav-link" data-scroll-target="#iii-instructions"><em>III) Instructions</em></a></li>
+  </ul></li>
+  <li><a href="#run-chart" id="toc-run-chart" class="nav-link" data-scroll-target="#run-chart"><strong>Run Chart</strong></a>
+  <ul class="collapse">
+  <li><a href="#i-description-1" id="toc-i-description-1" class="nav-link" data-scroll-target="#i-description-1"><em>I) Description</em></a></li>
+  <li><a href="#ii-background-for-measure-1" id="toc-ii-background-for-measure-1" class="nav-link" data-scroll-target="#ii-background-for-measure-1"><em>II) Background for measure</em></a></li>
+  <li><a href="#iii-instructions-1" id="toc-iii-instructions-1" class="nav-link" data-scroll-target="#iii-instructions-1"><em>III) Instructions</em></a></li>
+  <li><a href="#iv-example" id="toc-iv-example" class="nav-link" data-scroll-target="#iv-example"><em>IV) Example</em></a></li>
+  </ul></li>
+  <li><a href="#driver-diagram" id="toc-driver-diagram" class="nav-link" data-scroll-target="#driver-diagram"><strong>Driver Diagram</strong></a>
+  <ul class="collapse">
+  <li><a href="#i-description-2" id="toc-i-description-2" class="nav-link" data-scroll-target="#i-description-2"><em>I) Description</em></a></li>
+  <li><a href="#ii-background-for-measure-2" id="toc-ii-background-for-measure-2" class="nav-link" data-scroll-target="#ii-background-for-measure-2"><em>II) Background for measure</em></a></li>
+  <li><a href="#iii-instructions-2" id="toc-iii-instructions-2" class="nav-link" data-scroll-target="#iii-instructions-2"><em>III) Instructions</em></a></li>
+  <li><a href="#iv-example-1" id="toc-iv-example-1" class="nav-link" data-scroll-target="#iv-example-1"><em>IV) Example</em></a></li>
+  </ul></li>
+  <li><a href="#cause-and-effect-diagram" id="toc-cause-and-effect-diagram" class="nav-link" data-scroll-target="#cause-and-effect-diagram"><strong>Cause and Effect Diagram</strong></a>
+  <ul class="collapse">
+  <li><a href="#i-description-3" id="toc-i-description-3" class="nav-link" data-scroll-target="#i-description-3"><em>I) Description</em></a></li>
+  <li><a href="#ii-background-for-measure-3" id="toc-ii-background-for-measure-3" class="nav-link" data-scroll-target="#ii-background-for-measure-3"><em>II) Background for measure</em></a></li>
+  <li><a href="#iii-instructions-3" id="toc-iii-instructions-3" class="nav-link" data-scroll-target="#iii-instructions-3"><em>III) Instructions</em></a></li>
+  <li><a href="#iv-example-2" id="toc-iv-example-2" class="nav-link" data-scroll-target="#iv-example-2"><em>IV) Example</em></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -162,7 +195,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="examples-of-relevant-measures" class="level1">
 <h1>Examples of Relevant Measures</h1>
@@ -224,7 +259,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </section>
 <section id="pareto-chart" class="level1">
-<h1>Pareto Chart</h1>
+<h1><strong>Pareto Chart</strong></h1>
+<section id="i-description" class="level2">
+<h2 class="anchored" data-anchor-id="i-description"><em>I) Description</em></h2>
+<p>A bar chart composed of various factors that contribute to an overall effect arranged in the order from the largest to smallest contribution to the effect</p>
+</section>
+<section id="ii-background-for-measure" class="level2">
+<h2 class="anchored" data-anchor-id="ii-background-for-measure"><em>II) Background for measure</em></h2>
 <p>A Pareto chart is a bar chart composed of various factors that contribute to an overall effect arranged in the order from the largest to smallest contribution to the effect. It identifies and allows concentration of improvement on the “vital few” factors that have the largest contribution to the effect and “useful many” factors that have relatively smaller contribution to the effect.</p>
 <p>The dataset for a Pareto chart can be create in table format with headings of contributing factors to an overall effect, magnitude of each factor, percentage of the total each factor represents, and cumulative percentage for each factor.</p>
 <table class="table">
@@ -287,31 +328,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</section>
+<section id="iii-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="iii-instructions"><em>III) Instructions</em></h2>
 <p>The Pareto chart can be created manually or using a software including R with qcc package. The horizontal axis (X) is labeled with the factors contributing to the overall effect in order of largest to smallest. The left vertical axis (Y) is labeled with the unit of comparison from 0 to the total. The right vertical axis is labeled as cumulative percentage from 0% to 100%.</p>
 <p>The magnitude of the effect is depicted using a bar chart using the unit on the left vertical axis. The cumulative percentage is demonstrated using a line graph from 0% to 100%. The “vital few” factors are identified by the factors that contribute to 80% of the cumulative percentage.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">list</span>(<span class="at">CRAN=</span><span class="st">"http://cran.rstudio.com/"</span>))</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"qcc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Installing package into 'C:/Users/apj20/AppData/Local/R/win-library/4.3'
-(as 'lib' is unspecified)</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>package 'qcc' successfully unpacked and MD5 sums checked
-
+<pre><code>
 The downloaded binary packages are in
-    C:\Users\apj20\AppData\Local\Temp\RtmpoL3ijb\downloaded_packages</code></pre>
+    /var/folders/p6/4cwhhzhx2y71kgd20yjk0tqm0000gn/T//Rtmp5yC4Lf/downloaded_packages</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"qcc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"qcc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Package 'qcc' version 2.7</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Type 'citation("qcc")' for citing this R package in publications.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">delay.type=</span><span class="fu">c</span>(<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>, <span class="st">'E'</span>, <span class="st">'F'</span>))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>frequency <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">76</span>, <span class="dv">33</span>, <span class="dv">24</span>, <span class="dv">17</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">delay.type=</span><span class="fu">c</span>(<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>, <span class="st">'E'</span>, <span class="st">'F'</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>frequency <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">76</span>, <span class="dv">33</span>, <span class="dv">24</span>, <span class="dv">17</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  delay.type frequency
 1          A        76
@@ -321,13 +360,17 @@ The downloaded binary packages are in
 5          E        10
 6          F         5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pareto.chart</span>(df<span class="sc">$</span>frequency,</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">main=</span><span class="st">'Pareto Chart'</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">xlab=</span><span class="st">'Delay Type'</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">col=</span><span class="fu">heat.colors</span>(<span class="fu">length</span>(df<span class="sc">$</span>frequency))</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pareto.chart</span>(df<span class="sc">$</span>frequency,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">main=</span><span class="st">'Pareto Chart'</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">xlab=</span><span class="st">'Delay Type'</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">col=</span><span class="fu">heat.colors</span>(<span class="fu">length</span>(df<span class="sc">$</span>frequency))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cs-readmit_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="cs-readmit_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   
@@ -341,8 +384,65 @@ Pareto chart analysis for df$frequency
   F   5.000000 165.000000   3.030303   100.000000</code></pre>
 </div>
 </div>
+</section>
+</section>
+<section id="run-chart" class="level1">
+<h1><strong>Run Chart</strong></h1>
+<section id="i-description-1" class="level2">
+<h2 class="anchored" data-anchor-id="i-description-1"><em>I) Description</em></h2>
+<p>A graph that depicts the current performance of a process and monitors whether interventions lead to improvement</p>
+</section>
+<section id="ii-background-for-measure-1" class="level2">
+<h2 class="anchored" data-anchor-id="ii-background-for-measure-1"><em>II) Background for measure</em></h2>
+<p>A run chart is a graph that depicts data values over time with a horizontal median line dividing the data in half above and below the median value. It provides an overview of the performance of a process and identifies trends and variations in the data as a result of the quality improvement intervention.</p>
+<p>The dataset for a run chart can be created in table format with independent variable including unit of time or quarters at which the values were collected and dependent variable including unit value or percentage.</p>
+</section>
+<section id="iii-instructions-1" class="level2">
+<h2 class="anchored" data-anchor-id="iii-instructions-1"><em>III) Instructions</em></h2>
+<p>The run chart can be created manually or using a software including R with qicharts package. The horizontal axis (X) is labeled with unit of time or quarters sequentially. The vertical axis (Y) is labeled with the unit value or percentage of the measure of interest. The collected data points can be plotted and connected sequentially. A median line is placed as a horizontal line dividing the data points in half above or below the median value. The graph can be annotated when changes were initiated to observe the effect of interventions on the measure of interest.</p>
+</section>
+<section id="iv-example" class="level2">
+<h2 class="anchored" data-anchor-id="iv-example"><em>IV) Example</em></h2>
+<p>A random number generator was used to create a data sample of proportions of patients who met the criteria for early discharge. The data points were plotted by month sequentially. The quality improvement intervention was initiated at run number 6 as annotated. The data points above and below the horizontal median line indicate changes in the process performance at the time of the intervention change was implemented.</p>
+</section>
+</section>
+<section id="driver-diagram" class="level1">
+<h1><strong>Driver Diagram</strong></h1>
+<section id="i-description-2" class="level2">
+<h2 class="anchored" data-anchor-id="i-description-2"><em>I) Description</em></h2>
+<p>A diagram that displays identified “primary or secondary drivers” or contributors and relationship between them in relation to the overall aim of the project</p>
+</section>
+<section id="ii-background-for-measure-2" class="level2">
+<h2 class="anchored" data-anchor-id="ii-background-for-measure-2"><em>II) Background for measure</em></h2>
+<p>A driver diagram is a figure that displays relationships between the overall aim of the project, the primary drivers that contribute to achieving the aim, the secondary drivers that are subcomponents of the primary drivers, and change ideas to affect the secondary driver. It is generally developed with stakeholders and experts who are knowledgeable in different parts the system.</p>
+</section>
+<section id="iii-instructions-2" class="level2">
+<h2 class="anchored" data-anchor-id="iii-instructions-2"><em>III) Instructions</em></h2>
+<p>The driver diagram can be created manually using 4 columns labelled project aim, primary drivers, secondary drivers, and change ideas sequentially. The project aim provides an objective of quality improvement. The primary drivers have direct impact on the project aim. The secondary drivers are subgroups that impact the primary drivers. For each secondary driver, change ideas and interventions can be connected to test the impact of the secondary driver.</p>
+</section>
+<section id="iv-example-1" class="level2">
+<h2 class="anchored" data-anchor-id="iv-example-1"><em>IV) Example</em></h2>
+</section>
+</section>
+<section id="cause-and-effect-diagram" class="level1">
+<h1><strong>Cause and Effect Diagram</strong></h1>
+<section id="i-description-3" class="level2">
+<h2 class="anchored" data-anchor-id="i-description-3"><em>I) Description</em></h2>
+<p>A fishbone diagram that identifies contributors to certain effect or outcome and examine the relationship of the causes to the effect and to each other under the categories of Materials, Methods, Equipment, Environment, and People.</p>
+</section>
+<section id="ii-background-for-measure-3" class="level2">
+<h2 class="anchored" data-anchor-id="ii-background-for-measure-3"><em>II) Background for measure</em></h2>
+<p>A cause and effect diagram or the Ishikawa diagram identifies the causes that contribute to the overall effect and depicts the relationship between various causes and effects. The causes for the effect are traditionally categorized by Materials, Methods, Equipment, Environment, and People. The causes that contribute to the overall effect are listed as branch bones for each category. It is generally developed with stakeholders and experts who are knowledgeable in different parts the system.</p>
+</section>
+<section id="iii-instructions-3" class="level2">
+<h2 class="anchored" data-anchor-id="iii-instructions-3"><em>III) Instructions</em></h2>
+<p>The cause and effect diagram can be created manually or using a software including R with SixSigma package. The overall effect is labelled on the right-hand side of the page and a horizontal line is drawn across to the left starting at the effect. The categories of the causes for the effect are listed branching out from the horizontal line, traditionally including Materials, Methods, Equipment, Environment, and People. The causes that contribute to the effect are subsequently listed for each category.</p>
+</section>
+<section id="iv-example-2" class="level2">
+<h2 class="anchored" data-anchor-id="iv-example-2"><em>IV) Example</em></h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -425,10 +525,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -438,8 +537,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -452,6 +560,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -495,6 +722,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -520,6 +748,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -580,6 +834,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
