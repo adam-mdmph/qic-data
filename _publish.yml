@@ -1,4 +1,4 @@
 - source: project
   quarto-pub:
     - id: 915c4944-4a64-4ed7-8eb9-601c05b7978b
-      url: 'https://quartopub.com/sites/adam-mdmph/qic-data'
+      url: 'https://adam-mdmph.quarto.pub/qic-data'

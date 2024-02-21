@@ -88,6 +88,31 @@ The run chart can be created manually or using a software including R with qicha
 
 A random number generator was used to create a data sample of proportions of patients who met the criteria for early discharge. The data points were plotted by month sequentially. The quality improvement intervention was initiated at run number 6 as annotated. The data points above and below the horizontal median line indicate changes in the process performance at the time of the intervention change was implemented.
 
+```{r}
+install.packages("qicharts2", repos="http://cran.rstudio.com/", dependencies=TRUE)
+library("qicharts2")
+
+set.seed(12)
+y <- rbinom (12, 20, 0.5)
+n <- sample (16:20, 12, replace = TRUE)
+
+date <- seq(as.Date("2023/01/01"),
+            as.Date("2023/12/31"),
+            by = "months")
+
+date
+notes <- NA
+notes[6] <- "Intervention"
+
+qic (y, 
+     n,
+     x = date,
+     ylab = "Proportion of Early Discharges",
+     xlab = "Month",
+     notes = notes)
+
+```
+
 # **Driver Diagram**
 
 ## *I) Description*
@@ -104,6 +129,66 @@ The driver diagram can be created manually using 4 columns labelled project aim,
 
 ## *IV) Example*
 
+```{r}
+install.packages("DiagrammeR")
+library(DiagrammeR)
+
+DiagrammeR::grViz("digraph {
+
+graph [layout = dot, rankdir = LR]
+
+# define the global styles of the nodes. We can override these in box if we wish
+node [shape = rectangle, style = filled, fillcolor = Linen]
+
+aim [label = 'Reduce length \n 
+              of hospital stay to < 7 days \n 
+              following lower-extremity \n 
+              revascularization']
+pd1 [label = 'Delay in Postoperative Care']
+pd2 [label = 'Delay in Discharge Planning']
+sd1 [label = 'Exacerbation of comorbidities \n
+              extending hospitalization']
+sd2 [label = 'Delay in obtaining diagnostic \n
+              tests or consultation service \n
+              postoperatively']
+sd3 [label = 'Delay in recognizing \n
+              discharge needs']
+sd4 [label = 'Delay in receiving services or \n
+              equipment necessary for discharge']
+sd5 [label = 'Delay in securing transport or \n
+              placement in planned discharge disposition']
+ci1 [label = 'Include and follow form on \n
+              optimization and postoperative \n
+              care as per preoperative consultation']
+ci2 [label = 'Coordinate with team of \n
+              specialists and communicate \n
+              with technicians on postoperative \n
+              day one to obtain necessary \n
+              consultations and tests \n
+              prior to discharge']
+ci3 [label = 'Coordinate with multidisciplianry \n
+              team during rounds on medication review, \n
+              family meetings, home environment assessment, \n
+              and discharge referrals']
+ci4 [label = 'Coordinate with nursing and \n
+              discharge case managers during rounds']
+ci5 [label = 'Coordinate with discharge case \n
+              managers and family members or \n
+              guardians during rounds']
+
+# edge definitions with the node IDs
+aim -> {pd1 pd2}
+pd1 -> {sd1 sd2}
+pd2 -> {sd3 sd4 sd5}
+sd1 -> ci1
+sd2 -> ci2
+sd3 -> ci3
+sd4 -> ci4
+sd5 -> ci5
+}")
+
+```
+
 # **Cause and Effect Diagram**
 
 ## *I) Description*
@@ -119,3 +204,18 @@ A cause and effect diagram or the Ishikawa diagram identifies the causes that co
 The cause and effect diagram can be created manually or using a software including R with SixSigma package. The overall effect is labelled on the right-hand side of the page and a horizontal line is drawn across to the left starting at the effect. The categories of the causes for the effect are listed branching out from the horizontal line, traditionally including Materials, Methods, Equipment, Environment, and People. The causes that contribute to the effect are subsequently listed for each category.
 
 ## *IV) Example*
+
+```{r}
+install.packages("SixSigma")
+library("SixSigma")
+
+effect <- "Reduced Length of Stay"
+causes.gr <- c("Materials", "Methods", "Equipment", "Environment", "People")
+causes <- vector(mode = "list", length = length(causes.gr))
+causes[1] <- list(c("Unavailable Home Equipment", "Delayed Transportation", "Incomplete Orders"))
+causes[2] <- list(c("Lack of Streamlined Clinical Pathway", "Insufficient Number of Personnel", "Delayed Coordination of Discharge"))
+causes[3] <- list(c("Insufficient Home Supplies", "Pager Malfunction"))
+causes[4] <- list(c("Missed or Inaccurate Information", "Inconsistent Discharge Rounds", "Inadequate Team Coordination"))
+causes[5] <- list(c("Missing or Illegible Physician Order", "Heavy Workload for Discharge Cases", "Unavailable or Conflicting Work Times"))
+ss.ceDiag(effect, causes.gr, causes, sub = "Reduction of Length of Stay Following Lower-Extremity Revascularization")
+```

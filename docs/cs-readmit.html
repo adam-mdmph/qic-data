@@ -100,6 +100,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/viz-1.8.2/viz.js"></script>
+<link href="site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="site_libs/grViz-binding-1.0.11/grViz.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -339,7 +343,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>
 The downloaded binary packages are in
-    /var/folders/p6/4cwhhzhx2y71kgd20yjk0tqm0000gn/T//Rtmp5yC4Lf/downloaded_packages</code></pre>
+    /var/folders/p6/4cwhhzhx2y71kgd20yjk0tqm0000gn/T//RtmpEGyLsj/downloaded_packages</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"qcc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -404,6 +408,46 @@ Pareto chart analysis for df$frequency
 <section id="iv-example" class="level2">
 <h2 class="anchored" data-anchor-id="iv-example"><em>IV) Example</em></h2>
 <p>A random number generator was used to create a data sample of proportions of patients who met the criteria for early discharge. The data points were plotted by month sequentially. The quality improvement intervention was initiated at run number 6 as annotated. The data points above and below the horizontal median line indicate changes in the process performance at the time of the intervention change was implemented.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"qicharts2"</span>, <span class="at">repos=</span><span class="st">"http://cran.rstudio.com/"</span>, <span class="at">dependencies=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+The downloaded binary packages are in
+    /var/folders/p6/4cwhhzhx2y71kgd20yjk0tqm0000gn/T//RtmpEGyLsj/downloaded_packages</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"qicharts2"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rbinom</span> (<span class="dv">12</span>, <span class="dv">20</span>, <span class="fl">0.5</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">sample</span> (<span class="dv">16</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">12</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">"2023/01/01"</span>),</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>            <span class="fu">as.Date</span>(<span class="st">"2023/12/31"</span>),</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">"months"</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "2023-01-01" "2023-02-01" "2023-03-01" "2023-04-01" "2023-05-01"
+ [6] "2023-06-01" "2023-07-01" "2023-08-01" "2023-09-01" "2023-10-01"
+[11] "2023-11-01" "2023-12-01"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>notes <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>notes[<span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="st">"Intervention"</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">qic</span> (y, </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>     n,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> date,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Proportion of Early Discharges"</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Month"</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">notes =</span> notes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cs-readmit_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="driver-diagram" class="level1">
@@ -422,6 +466,73 @@ Pareto chart analysis for df$frequency
 </section>
 <section id="iv-example-1" class="level2">
 <h2 class="anchored" data-anchor-id="iv-example-1"><em>IV) Example</em></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"DiagrammeR"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+The downloaded binary packages are in
+    /var/folders/p6/4cwhhzhx2y71kgd20yjk0tqm0000gn/T//RtmpEGyLsj/downloaded_packages</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DiagrammeR)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>DiagrammeR<span class="sc">::</span><span class="fu">grViz</span>(<span class="st">"digraph {</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="st">graph [layout = dot, rankdir = LR]</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="st"># define the global styles of the nodes. We can override these in box if we wish</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="st">node [shape = rectangle, style = filled, fillcolor = Linen]</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="st">aim [label = 'Reduce length </span><span class="sc">\n</span><span class="st"> </span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="st">              of hospital stay to &lt; 7 days </span><span class="sc">\n</span><span class="st"> </span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="st">              following lower-extremity </span><span class="sc">\n</span><span class="st"> </span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="st">              revascularization']</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="st">pd1 [label = 'Delay in Postoperative Care']</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="st">pd2 [label = 'Delay in Discharge Planning']</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="st">sd1 [label = 'Exacerbation of comorbidities </span><span class="sc">\n</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="st">              extending hospitalization']</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="st">sd2 [label = 'Delay in obtaining diagnostic </span><span class="sc">\n</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="st">              tests or consultation service </span><span class="sc">\n</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="st">              postoperatively']</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="st">sd3 [label = 'Delay in recognizing </span><span class="sc">\n</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="st">              discharge needs']</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="st">sd4 [label = 'Delay in receiving services or </span><span class="sc">\n</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="st">              equipment necessary for discharge']</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="st">sd5 [label = 'Delay in securing transport or </span><span class="sc">\n</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="st">              placement in planned discharge disposition']</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="st">ci1 [label = 'Include and follow form on </span><span class="sc">\n</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="st">              optimization and postoperative </span><span class="sc">\n</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="st">              care as per preoperative consultation']</span></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="st">ci2 [label = 'Coordinate with team of </span><span class="sc">\n</span></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="st">              specialists and communicate </span><span class="sc">\n</span></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="st">              with technicians on postoperative </span><span class="sc">\n</span></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a><span class="st">              day one to obtain necessary </span><span class="sc">\n</span></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="st">              consultations and tests </span><span class="sc">\n</span></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a><span class="st">              prior to discharge']</span></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a><span class="st">ci3 [label = 'Coordinate with multidisciplianry </span><span class="sc">\n</span></span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a><span class="st">              team during rounds on medication review, </span><span class="sc">\n</span></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a><span class="st">              family meetings, home environment assessment, </span><span class="sc">\n</span></span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a><span class="st">              and discharge referrals']</span></span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a><span class="st">ci4 [label = 'Coordinate with nursing and </span><span class="sc">\n</span></span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a><span class="st">              discharge case managers during rounds']</span></span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a><span class="st">ci5 [label = 'Coordinate with discharge case </span><span class="sc">\n</span></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a><span class="st">              managers and family members or </span><span class="sc">\n</span></span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a><span class="st">              guardians during rounds']</span></span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a><span class="st"># edge definitions with the node IDs</span></span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a><span class="st">aim -&gt; {pd1 pd2}</span></span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a><span class="st">pd1 -&gt; {sd1 sd2}</span></span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a><span class="st">pd2 -&gt; {sd3 sd4 sd5}</span></span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a><span class="st">sd1 -&gt; ci1</span></span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a><span class="st">sd2 -&gt; ci2</span></span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a><span class="st">sd3 -&gt; ci3</span></span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a><span class="st">sd4 -&gt; ci4</span></span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a><span class="st">sd5 -&gt; ci5</span></span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-adfc661deba4fc7821a6" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-adfc661deba4fc7821a6">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\naim [label = \"Reduce length \n \n              of hospital stay to < 7 days \n \n              following lower-extremity \n \n              revascularization\"]\npd1 [label = \"Delay in Postoperative Care\"]\npd2 [label = \"Delay in Discharge Planning\"]\nsd1 [label = \"Exacerbation of comorbidities \n\n              extending hospitalization\"]\nsd2 [label = \"Delay in obtaining diagnostic \n\n              tests or consultation service \n\n              postoperatively\"]\nsd3 [label = \"Delay in recognizing \n\n              discharge needs\"]\nsd4 [label = \"Delay in receiving services or \n\n              equipment necessary for discharge\"]\nsd5 [label = \"Delay in securing transport or \n\n              placement in planned discharge disposition\"]\nci1 [label = \"Include and follow form on \n\n              optimization and postoperative \n\n              care as per preoperative consultation\"]\nci2 [label = \"Coordinate with team of \n\n              specialists and communicate \n\n              with technicians on postoperative \n\n              day one to obtain necessary \n\n              consultations and tests \n\n              prior to discharge\"]\nci3 [label = \"Coordinate with multidisciplianry \n\n              team during rounds on medication review, \n\n              family meetings, home environment assessment, \n\n              and discharge referrals\"]\nci4 [label = \"Coordinate with nursing and \n\n              discharge case managers during rounds\"]\nci5 [label = \"Coordinate with discharge case \n\n              managers and family members or \n\n              guardians during rounds\"]\n\n# edge definitions with the node IDs\naim -> {pd1 pd2}\npd1 -> {sd1 sd2}\npd2 -> {sd3 sd4 sd5}\nsd1 -> ci1\nsd2 -> ci2\nsd3 -> ci3\nsd4 -> ci4\nsd5 -> ci5\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 </section>
 </section>
 <section id="cause-and-effect-diagram" class="level1">
@@ -440,6 +551,32 @@ Pareto chart analysis for df$frequency
 </section>
 <section id="iv-example-2" class="level2">
 <h2 class="anchored" data-anchor-id="iv-example-2"><em>IV) Example</em></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"SixSigma"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+The downloaded binary packages are in
+    /var/folders/p6/4cwhhzhx2y71kgd20yjk0tqm0000gn/T//RtmpEGyLsj/downloaded_packages</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"SixSigma"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>effect <span class="ot">&lt;-</span> <span class="st">"Reduced Length of Stay"</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>causes.gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Materials"</span>, <span class="st">"Methods"</span>, <span class="st">"Equipment"</span>, <span class="st">"Environment"</span>, <span class="st">"People"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>causes <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"list"</span>, <span class="at">length =</span> <span class="fu">length</span>(causes.gr))</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Unavailable Home Equipment"</span>, <span class="st">"Delayed Transportation"</span>, <span class="st">"Incomplete Orders"</span>))</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Lack of Streamlined Clinical Pathway"</span>, <span class="st">"Insufficient Number of Personnel"</span>, <span class="st">"Delayed Coordination of Discharge"</span>))</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Insufficient Home Supplies"</span>, <span class="st">"Pager Malfunction"</span>))</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Missed or Inaccurate Information"</span>, <span class="st">"Inconsistent Discharge Rounds"</span>, <span class="st">"Inadequate Team Coordination"</span>))</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Missing or Illegible Physician Order"</span>, <span class="st">"Heavy Workload for Discharge Cases"</span>, <span class="st">"Unavailable or Conflicting Work Times"</span>))</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ss.ceDiag</span>(effect, causes.gr, causes, <span class="at">sub =</span> <span class="st">"Reduction of Length of Stay Following Lower-Extremity Revascularization"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cs-readmit_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
