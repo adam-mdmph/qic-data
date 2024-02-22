@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://adam-mdmph.quarto.pub/qic-data/cs-readmit.html</loc>
-    <lastmod>2024-02-21T03:37:17.904Z</lastmod>
+    <loc>https://adam-mdmph.quarto.pub/qic-data/data-vis.html</loc>
+    <lastmod>2024-02-22T01:34:06.162Z</lastmod>
   </url>
   <url>
     <loc>https://adam-mdmph.quarto.pub/qic-data/index.html</loc>
-    <lastmod>2024-02-21T03:04:08.621Z</lastmod>
+    <lastmod>2024-02-22T01:29:39.450Z</lastmod>
+  </url>
+  <url>
+    <loc>https://adam-mdmph.quarto.pub/qic-data/cs-readmit.html</loc>
+    <lastmod>2024-02-22T01:30:46.591Z</lastmod>
   </url>
 </urlset>

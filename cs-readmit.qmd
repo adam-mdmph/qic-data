@@ -6,7 +6,13 @@ title: "Case Study: Reducing Readmission"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Problem
+
+---DESCRIBE THE PROBLEM STATEMENT HERE---
+
 # Examples of Relevant Measures
+
+--DESCRIBE HOW THEY WOULD SELECT THEIR MEASURES--
 
 +-----------------------+----------------------------------+---------------------------+
 | Measure Type          | Example                          | Where data could be found |
@@ -24,37 +30,50 @@ knitr::opts_chunk$set(echo = TRUE)
 | **Balancing Measure** | -   Readmission                  | -   Registry data         |
 +-----------------------+----------------------------------+---------------------------+
 
+# **Cause and Effect Diagram**
+
+--DESCRIBE HOW YOU GET THE DATA FOR A CAUSE AND EFFECT DIAGRAM--
+
+```{r}
+library("SixSigma")
+
+effect <- "Reduced Length of Stay"
+causes.gr <- c("Materials", "Methods", "Equipment", "Environment", "People")
+causes <- vector(mode = "list", length = length(causes.gr))
+causes[1] <- list(c("Unavailable Home Equipment", "Delayed Transportation", "Incomplete Orders"))
+causes[2] <- list(c("Lack of Streamlined Clinical Pathway", "Insufficient Number of Personnel", "Delayed Coordination of Discharge"))
+causes[3] <- list(c("Insufficient Home Supplies", "Pager Malfunction"))
+causes[4] <- list(c("Missed or Inaccurate Information", "Inconsistent Discharge Rounds", "Inadequate Team Coordination"))
+causes[5] <- list(c("Missing or Illegible Physician Order", "Heavy Workload for Discharge Cases", "Unavailable or Conflicting Work Times"))
+ss.ceDiag(effect, causes.gr, causes, sub = "Reduction of Length of Stay Following Lower-Extremity Revascularization")
+```
+
 # **Pareto Chart**
 
-## *I) Description*
+--DESCRIBE HOW THEY WOULD GET THE DATA FOR THE PARETO CHART
 
-A bar chart composed of various factors that contribute to an overall effect arranged in the order from the largest to smallest contribution to the effect
-
-## *II) Background for measure*
-
-A Pareto chart is a bar chart composed of various factors that contribute to an overall effect arranged in the order from the largest to smallest contribution to the effect. It identifies and allows concentration of improvement on the “vital few” factors that have the largest contribution to the effect and “useful many” factors that have relatively smaller contribution to the effect.
-
-The dataset for a Pareto chart can be create in table format with headings of contributing factors to an overall effect, magnitude of each factor, percentage of the total each factor represents, and cumulative percentage for each factor.
-
-| Delay Type                                                                                         | Count   | \%      | Cum% |
-|----------------------------------------------------------------------------------------------------|---------|---------|------|
-| Delay in securing transportation to or placement in planned discharge disposition                  | 76      | 46      | 46   |
-| Delay in coordinating discharge planning with allied healthcare workers, patient, patient's family | 33      | 20      | 66   |
-| Delay in receiving services or equipment for discharge                                             | 24      | 14      | 80   |
-| Delay in recognizing discharge needs                                                               | 17      | 10      | 90   |
-| Delay in diagnostic tests or consultation service                                                  | 10      | 6       | 96   |
-| Completion or exacerbation of comorbidities                                                        | 5       | 4       | 100  |
-| **Total**                                                                                          | **165** | **100** |      |
-
-## *III) Instructions*
-
-The Pareto chart can be created manually or using a software including R with qcc package. The horizontal axis (X) is labeled with the factors contributing to the overall effect in order of largest to smallest. The left vertical axis (Y) is labeled with the unit of comparison from 0 to the total. The right vertical axis is labeled as cumulative percentage from 0% to 100%.
-
-The magnitude of the effect is depicted using a bar chart using the unit on the left vertical axis. The cumulative percentage is demonstrated using a line graph from 0% to 100%. The “vital few” factors are identified by the factors that contribute to 80% of the cumulative percentage.
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+| Delay Type                                                                                         | Count   | \%      | Cum%  |
++====================================================================================================+=========+=========+=======+
+| Delay in securing transportation to or placement in planned discharge disposition                  | 76      | 46      | 46    |
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+| Delay in coordinating discharge planning with allied healthcare workers, patient, patient's family | 33      | 20      | 66    |
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+| Delay in receiving services or equipment for discharge                                             | 24      | 14      | 80    |
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+| Delay in recognizing discharge needs                                                               | 17      | 10      | 90    |
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+| Delay in diagnostic tests or consultation service                                                  | 10      | 6       | 96    |
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+| Completion or exacerbation of comorbidities                                                        | 5       | 4       | 100   |
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
+| **Total**                                                                                          | **165** | **100** |       |
++----------------------------------------------------------------------------------------------------+---------+---------+-------+
 
 ```{r, warning=FALSE}
-options(repos = list(CRAN="http://cran.rstudio.com/"))
-install.packages("qcc")
+
+# I changed the code in the data vis tutorial.  Take a look at the changes I made and see if you agree with them.  We should use the same code but just change the numbers
+
 library("qcc")
 df <- data.frame(delay.type=c('A', 'B', 'C', 'D', 'E', 'F'))
 df$frequency = c(76, 33, 24, 17, 10, 5)
@@ -68,69 +87,11 @@ pareto.chart(df$frequency,
 
 ```
 
-# **Run Chart**
-
-## *I) Description*
-
-A graph that depicts the current performance of a process and monitors whether interventions lead to improvement
-
-## *II) Background for measure*
-
-A run chart is a graph that depicts data values over time with a horizontal median line dividing the data in half above and below the median value. It provides an overview of the performance of a process and identifies trends and variations in the data as a result of the quality improvement intervention.
-
-The dataset for a run chart can be created in table format with independent variable including unit of time or quarters at which the values were collected and dependent variable including unit value or percentage.
-
-## *III) Instructions*
-
-The run chart can be created manually or using a software including R with qicharts package. The horizontal axis (X) is labeled with unit of time or quarters sequentially. The vertical axis (Y) is labeled with the unit value or percentage of the measure of interest. The collected data points can be plotted and connected sequentially. A median line is placed as a horizontal line dividing the data points in half above or below the median value. The graph can be annotated when changes were initiated to observe the effect of interventions on the measure of interest.
-
-## *IV) Example*
-
-A random number generator was used to create a data sample of proportions of patients who met the criteria for early discharge. The data points were plotted by month sequentially. The quality improvement intervention was initiated at run number 6 as annotated. The data points above and below the horizontal median line indicate changes in the process performance at the time of the intervention change was implemented.
-
-```{r}
-install.packages("qicharts2", repos="http://cran.rstudio.com/", dependencies=TRUE)
-library("qicharts2")
-
-set.seed(12)
-y <- rbinom (12, 20, 0.5)
-n <- sample (16:20, 12, replace = TRUE)
-
-date <- seq(as.Date("2023/01/01"),
-            as.Date("2023/12/31"),
-            by = "months")
-
-date
-notes <- NA
-notes[6] <- "Intervention"
-
-qic (y, 
-     n,
-     x = date,
-     ylab = "Proportion of Early Discharges",
-     xlab = "Month",
-     notes = notes)
-
-```
-
 # **Driver Diagram**
 
-## *I) Description*
-
-A diagram that displays identified “primary or secondary drivers” or contributors and relationship between them in relation to the overall aim of the project
-
-## *II) Background for measure*
-
-A driver diagram is a figure that displays relationships between the overall aim of the project, the primary drivers that contribute to achieving the aim, the secondary drivers that are subcomponents of the primary drivers, and change ideas to affect the secondary driver. It is generally developed with stakeholders and experts who are knowledgeable in different parts the system.
-
-## *III) Instructions*
-
-The driver diagram can be created manually using 4 columns labelled project aim, primary drivers, secondary drivers, and change ideas sequentially. The project aim provides an objective of quality improvement. The primary drivers have direct impact on the project aim. The secondary drivers are subgroups that impact the primary drivers. For each secondary driver, change ideas and interventions can be connected to test the impact of the secondary driver.
-
-## *IV) Example*
+--DESCRIBE HOW TO TAKE THE DATA FROM THE PARETO CHART AND ORGANIZE INTO A DRIVER DIAGRAM--
 
 ```{r}
-install.packages("DiagrammeR")
 library(DiagrammeR)
 
 DiagrammeR::grViz("digraph {
@@ -189,33 +150,33 @@ sd5 -> ci5
 
 ```
 
-# **Cause and Effect Diagram**
+# **Run Chart**
 
-## *I) Description*
-
-A fishbone diagram that identifies contributors to certain effect or outcome and examine the relationship of the causes to the effect and to each other under the categories of Materials, Methods, Equipment, Environment, and People.
-
-## *II) Background for measure*
-
-A cause and effect diagram or the Ishikawa diagram identifies the causes that contribute to the overall effect and depicts the relationship between various causes and effects. The causes for the effect are traditionally categorized by Materials, Methods, Equipment, Environment, and People. The causes that contribute to the overall effect are listed as branch bones for each category. It is generally developed with stakeholders and experts who are knowledgeable in different parts the system.
-
-## *III) Instructions*
-
-The cause and effect diagram can be created manually or using a software including R with SixSigma package. The overall effect is labelled on the right-hand side of the page and a horizontal line is drawn across to the left starting at the effect. The categories of the causes for the effect are listed branching out from the horizontal line, traditionally including Materials, Methods, Equipment, Environment, and People. The causes that contribute to the effect are subsequently listed for each category.
-
-## *IV) Example*
+---DESCRIBE HOW AND WHEN THEY WOULD USE THE RUN CHART---
 
 ```{r}
-install.packages("SixSigma")
-library("SixSigma")
 
-effect <- "Reduced Length of Stay"
-causes.gr <- c("Materials", "Methods", "Equipment", "Environment", "People")
-causes <- vector(mode = "list", length = length(causes.gr))
-causes[1] <- list(c("Unavailable Home Equipment", "Delayed Transportation", "Incomplete Orders"))
-causes[2] <- list(c("Lack of Streamlined Clinical Pathway", "Insufficient Number of Personnel", "Delayed Coordination of Discharge"))
-causes[3] <- list(c("Insufficient Home Supplies", "Pager Malfunction"))
-causes[4] <- list(c("Missed or Inaccurate Information", "Inconsistent Discharge Rounds", "Inadequate Team Coordination"))
-causes[5] <- list(c("Missing or Illegible Physician Order", "Heavy Workload for Discharge Cases", "Unavailable or Conflicting Work Times"))
-ss.ceDiag(effect, causes.gr, causes, sub = "Reduction of Length of Stay Following Lower-Extremity Revascularization")
+library("qicharts2")
+
+# I think we should change this to put in the data manually based on how it was collected.  We could even show how to manipulate and summarize the raw patient level data.
+
+set.seed(12)
+y <- rbinom (12, 20, 0.5)
+n <- sample (16:20, 12, replace = TRUE)
+
+date <- seq(as.Date("2023/01/01"),
+            as.Date("2023/12/31"),
+            by = "months")
+
+date
+notes <- NA
+notes[6] <- "Intervention"
+
+qic (y, 
+     n,
+     x = date,
+     ylab = "Proportion of Early Discharges",
+     xlab = "Month",
+     notes = notes)
+
 ```

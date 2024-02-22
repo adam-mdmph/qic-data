@@ -77,6 +77,21 @@ It is important to consider the types of measures to be extracted from the data 
 
 ::: columns
 ::: {.column width="15%"}
+![](icons/noun-fishbone-diagram-5110202.png)
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="75%"}
+**Cause and Effect Diagram**
+
+A fishbone diagram that identifies contributors to certain effect or outcome and examines the relationship of cases to the effect and to each other
+:::
+:::
+
+::: columns
+::: {.column width="15%"}
 ![](icons/noun-pareto-diagram-626189.png)
 :::
 
@@ -120,17 +135,3 @@ A graph that depicts the current performance of a process and monitors whether i
 :::
 :::
 
-::: columns
-::: {.column width="15%"}
-![](icons/noun-fishbone-diagram-5110202.png)
-:::
-
-::: {.column width="10%"}
-:::
-
-::: {.column width="75%"}
-**Cause and Effect Diagram**
-
-A fishbone diagram that identifies contributors to certain effect or outcome and examines the relationship of cases to the effect and to each other
-:::
-:::
