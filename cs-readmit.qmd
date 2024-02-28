@@ -6,13 +6,90 @@ title: "Case Study: Reducing Readmission"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Setting
+
+This case study describes the process of a vascular surgery practice to improve operational, financial, and clinical outcomes by reducing length of hospital stay. The practice is affiliated with an urban academic hospital centre with shared operating rooms and hospital beds with other specialties. An audit by the medical centre has demonstrated a disproportionately longer length of hospital stay in patients that underwent open lower-extremity revascularization. This has led to complaints from other specialties and patients due to cancellation and postponement of elective surgeries.
+
+The problem was confirmed by a systems survey and patient reports and the approach to quality improvement was developed using the Plan-Do-Study-Act cycle as described previously. The samples of data analysis methods presented in this case study are meant to be examples and the quality improvement process will vary depending on the practice. The case study will describe the process of using the case to use the cause and effect diagram, Pareto chart, driver diagram, and run chart to identify problems, support improvements, and monitor progress.
+
 # Problem
 
----DESCRIBE THE PROBLEM STATEMENT HERE---
+The length of hospital stay following open lower-extremity revascularization is longer than expected undermining the quality of patient care and hospital operations.
 
-# Examples of Relevant Measures
+# Cause and Effect Diagram
 
---DESCRIBE HOW THEY WOULD SELECT THEIR MEASURES--
+The practice manager was informed of the prolonged length of hospital stay from the hospital centre’s audit and based on other staff and patients’ complaints. To identify and confirm the problem, the manager completed a review of administrative records and consulted multiple stakeholders including patients and their families, most responsible care service, allied members of the care team (nurses, social workers, care managers), and administration. The stakeholder group were consulted to identify key causes leading to prolonged hospitalization related to materials, methods, people, environment, and equipment.
+
+```{r cause and effect, warning=FALSE, message = FALSE}
+library("SixSigma")
+
+effect <- "Longer Length of Stay"
+causes.gr <- c("Materials", "Methods", "Equipment", "Environment", "People")
+causes <- vector(mode = "list", length = length(causes.gr))
+causes[1] <- list(c("Unavailable Equipment", "Delayed Transportation", "Incomplete Orders"))
+causes[2] <- list(c("Lack of Streamlined Clinical Pathway", "Delayed Coordination of Discharge"))
+causes[3] <- list(c("Insufficient Home Supplies"))
+causes[4] <- list(c("Missed Discharge Information", "Missed Discharge Rounds", "Team Coordination"))
+causes[5] <- list(c("Missing Physician Order", "Heavy Workload", "Limtied Personnel"))
+ss.ceDiag(effect, causes.gr, causes, sub = "Possible Causes for Increased Length of Stay Following Lower-Extremity Revascularization")
+```
+
+# Pareto Chart
+
+From the cause and effect diagram, the group identified major factors including lack of a streamlined clinical pathway on the electronic medical records, missing physician orders, lack of routine discharge rounds, exacerbation of comorbidities, delayed transportation, and missing home equipment.
+
+A chart review and a systems survey were conducted to identify the frequency of the delay type in patients experiencing prolonged hospitalization. The “vital few” delay types that had the largest contribution to delayed discharge included lack of clinical pathway, missing physician orders, and lack of routine discharge rounds.
+
+```{r pareto, warning=FALSE, message = FALSE}
+library("qcc")
+
+frequency = c(50, 25, 10, 8, 5, 2)
+names(frequency) = c('Clinial Pathway', 'Physician Orders', 'Discharge Rounds', 'Clinical Exacerbation', 'Transportation', 'Home Equipment')
+
+pareto.chart(frequency,
+             main = 'Pareto Chart',
+             col=heat.colors(length(frequency)),
+             las = 2
+)
+```
+
+# Driver Diagram
+
+The “vital few” delay types were useful in identifying the primary and associated secondary drivers. The practice manager consulted the stakeholder group to design the interventions to test each secondary driver. Each stakeholder provided valuable input into the details of the intervention.
+
+```{r Driver, warning=FALSE, message = FALSE}
+library(DiagrammeR)
+
+DiagrammeR::grViz("digraph {
+
+graph [layout = dot, rankdir = LR]
+node [shape = rectangle, style = filled]
+
+aim [label = 'Reduction of LOS']
+pd1 [label = 'Delayed Discharge Planning']
+pd2 [label = 'Delayed Postoperative Care']
+sd1 [label = 'Delay in Recognizing Discharge Needs']
+sd2 [label = 'Missing Physician Orders']
+sd3 [label = 'Exacerbation of Comorbidities']
+sd4 [label = 'Delayed Postoperative Tests and Consultations']
+ci1 [label = 'Implementation of Clinical Pathway on Electronic Medical Records']
+ci2 [label = 'Daily Discharge Rounds to Coordinate with Discharge Case Manager']
+ci3 [label = 'Inclusion of Preoperative Consultation Recommendations in Task Items']
+ci4 [label = 'Implement Streamlined Consultation and Diagnostic Test Requests as Postoperative Pathway']
+
+aim -> {pd1 pd2}
+pd1 -> {sd1 sd2}
+pd2 -> {sd3 sd4}
+sd1 -> ci1
+sd2 -> ci2
+sd3 -> ci3
+sd4 -> ci4
+}")
+```
+
+# Run Chart
+
+Following the implementation of an intervention/change idea, the practice manager reviewed the charts of patients that underwent open lower-extremity revascularization. The practice manager and the stakeholder group established targets of early discharge defined as discharge within 5 days postoperatively. The data on proportion of early discharge 6 months prior to the intervention were collected to evaluate the baseline performance. Following consultation with the stakeholder group, the outcome and process measures were selected including length of stay, cost, discharge summary completion within 5 days, and balancing measure including readmission was considered as a potential consequence of early discharge.
 
 +-----------------------+----------------------------------+---------------------------+
 | Measure Type          | Example                          | Where data could be found |
@@ -30,153 +107,25 @@ knitr::opts_chunk$set(echo = TRUE)
 | **Balancing Measure** | -   Readmission                  | -   Registry data         |
 +-----------------------+----------------------------------+---------------------------+
 
-# **Cause and Effect Diagram**
+The data on proportion of early discharges were collected monthly from administrative and clinical records and plotted on the run chart to assess for improvements and monitor progress. The first intervention led to an improved outcome and the implementation and the process of the intervention were reassessed and further improved based on stakeholder feedback. Following additional modifications to the initial intervention, the practice saw a greater improvement in the proportion of early discharge
 
---DESCRIBE HOW YOU GET THE DATA FOR A CAUSE AND EFFECT DIAGRAM--
-
-```{r}
-library("SixSigma")
-
-effect <- "Reduced Length of Stay"
-causes.gr <- c("Materials", "Methods", "Equipment", "Environment", "People")
-causes <- vector(mode = "list", length = length(causes.gr))
-causes[1] <- list(c("Unavailable Home Equipment", "Delayed Transportation", "Incomplete Orders"))
-causes[2] <- list(c("Lack of Streamlined Clinical Pathway", "Insufficient Number of Personnel", "Delayed Coordination of Discharge"))
-causes[3] <- list(c("Insufficient Home Supplies", "Pager Malfunction"))
-causes[4] <- list(c("Missed or Inaccurate Information", "Inconsistent Discharge Rounds", "Inadequate Team Coordination"))
-causes[5] <- list(c("Missing or Illegible Physician Order", "Heavy Workload for Discharge Cases", "Unavailable or Conflicting Work Times"))
-ss.ceDiag(effect, causes.gr, causes, sub = "Reduction of Length of Stay Following Lower-Extremity Revascularization")
-```
-
-# **Pareto Chart**
-
---DESCRIBE HOW THEY WOULD GET THE DATA FOR THE PARETO CHART
-
-+----------------------------------------------------------------------------------------------------+---------+---------+-------+
-| Delay Type                                                                                         | Count   | \%      | Cum%  |
-+====================================================================================================+=========+=========+=======+
-| Delay in securing transportation to or placement in planned discharge disposition                  | 76      | 46      | 46    |
-+----------------------------------------------------------------------------------------------------+---------+---------+-------+
-| Delay in coordinating discharge planning with allied healthcare workers, patient, patient's family | 33      | 20      | 66    |
-+----------------------------------------------------------------------------------------------------+---------+---------+-------+
-| Delay in receiving services or equipment for discharge                                             | 24      | 14      | 80    |
-+----------------------------------------------------------------------------------------------------+---------+---------+-------+
-| Delay in recognizing discharge needs                                                               | 17      | 10      | 90    |
-+----------------------------------------------------------------------------------------------------+---------+---------+-------+
-| Delay in diagnostic tests or consultation service                                                  | 10      | 6       | 96    |
-+----------------------------------------------------------------------------------------------------+---------+---------+-------+
-| Completion or exacerbation of comorbidities                                                        | 5       | 4       | 100   |
-+----------------------------------------------------------------------------------------------------+---------+---------+-------+
-| **Total**                                                                                          | **165** | **100** |       |
-+----------------------------------------------------------------------------------------------------+---------+---------+-------+
-
-```{r, warning=FALSE}
-
-# I changed the code in the data vis tutorial.  Take a look at the changes I made and see if you agree with them.  We should use the same code but just change the numbers
-
-library("qcc")
-df <- data.frame(delay.type=c('A', 'B', 'C', 'D', 'E', 'F'))
-df$frequency = c(76, 33, 24, 17, 10, 5)
-df
-
-pareto.chart(df$frequency,
-             main='Pareto Chart',
-             xlab='Delay Type',
-             col=heat.colors(length(df$frequency))
-)
-
-```
-
-# **Driver Diagram**
-
---DESCRIBE HOW TO TAKE THE DATA FROM THE PARETO CHART AND ORGANIZE INTO A DRIVER DIAGRAM--
-
-```{r}
-library(DiagrammeR)
-
-DiagrammeR::grViz("digraph {
-
-graph [layout = dot, rankdir = LR]
-
-# define the global styles of the nodes. We can override these in box if we wish
-node [shape = rectangle, style = filled, fillcolor = Linen]
-
-aim [label = 'Reduce length \n 
-              of hospital stay to < 7 days \n 
-              following lower-extremity \n 
-              revascularization']
-pd1 [label = 'Delay in Postoperative Care']
-pd2 [label = 'Delay in Discharge Planning']
-sd1 [label = 'Exacerbation of comorbidities \n
-              extending hospitalization']
-sd2 [label = 'Delay in obtaining diagnostic \n
-              tests or consultation service \n
-              postoperatively']
-sd3 [label = 'Delay in recognizing \n
-              discharge needs']
-sd4 [label = 'Delay in receiving services or \n
-              equipment necessary for discharge']
-sd5 [label = 'Delay in securing transport or \n
-              placement in planned discharge disposition']
-ci1 [label = 'Include and follow form on \n
-              optimization and postoperative \n
-              care as per preoperative consultation']
-ci2 [label = 'Coordinate with team of \n
-              specialists and communicate \n
-              with technicians on postoperative \n
-              day one to obtain necessary \n
-              consultations and tests \n
-              prior to discharge']
-ci3 [label = 'Coordinate with multidisciplianry \n
-              team during rounds on medication review, \n
-              family meetings, home environment assessment, \n
-              and discharge referrals']
-ci4 [label = 'Coordinate with nursing and \n
-              discharge case managers during rounds']
-ci5 [label = 'Coordinate with discharge case \n
-              managers and family members or \n
-              guardians during rounds']
-
-# edge definitions with the node IDs
-aim -> {pd1 pd2}
-pd1 -> {sd1 sd2}
-pd2 -> {sd3 sd4 sd5}
-sd1 -> ci1
-sd2 -> ci2
-sd3 -> ci3
-sd4 -> ci4
-sd5 -> ci5
-}")
-
-```
-
-# **Run Chart**
-
----DESCRIBE HOW AND WHEN THEY WOULD USE THE RUN CHART---
-
-```{r}
-
+```{r run chart, warning=FALSE, message = FALSE}
 library("qicharts2")
 
-# I think we should change this to put in the data manually based on how it was collected.  We could even show how to manipulate and summarize the raw patient level data.
-
-set.seed(12)
-y <- rbinom (12, 20, 0.5)
-n <- sample (16:20, 12, replace = TRUE)
+y <- c(25, 24, 27, 24, 28, 30, 35, 38, 37, 40, 38, 40)
+n <- c(55, 57, 55, 50, 57, 52, 54, 51, 52, 53, 52, 50)
 
 date <- seq(as.Date("2023/01/01"),
             as.Date("2023/12/31"),
             by = "months")
 
-date
 notes <- NA
 notes[6] <- "Intervention"
 
 qic (y, 
      n,
      x = date,
-     ylab = "Proportion of Early Discharges",
+     ylab = "Proportion of Early Discharge",
      xlab = "Month",
      notes = notes)
-
 ```

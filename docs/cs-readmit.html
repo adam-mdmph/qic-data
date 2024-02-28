@@ -154,12 +154,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem">Problem</a></li>
-  <li><a href="#examples-of-relevant-measures" id="toc-examples-of-relevant-measures" class="nav-link" data-scroll-target="#examples-of-relevant-measures">Examples of Relevant Measures</a></li>
-  <li><a href="#cause-and-effect-diagram" id="toc-cause-and-effect-diagram" class="nav-link" data-scroll-target="#cause-and-effect-diagram"><strong>Cause and Effect Diagram</strong></a></li>
-  <li><a href="#pareto-chart" id="toc-pareto-chart" class="nav-link" data-scroll-target="#pareto-chart"><strong>Pareto Chart</strong></a></li>
-  <li><a href="#driver-diagram" id="toc-driver-diagram" class="nav-link" data-scroll-target="#driver-diagram"><strong>Driver Diagram</strong></a></li>
-  <li><a href="#run-chart" id="toc-run-chart" class="nav-link" data-scroll-target="#run-chart"><strong>Run Chart</strong></a></li>
+  <li><a href="#setting" id="toc-setting" class="nav-link active" data-scroll-target="#setting">Setting</a></li>
+  <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">Problem</a></li>
+  <li><a href="#cause-and-effect-diagram" id="toc-cause-and-effect-diagram" class="nav-link" data-scroll-target="#cause-and-effect-diagram">Cause and Effect Diagram</a></li>
+  <li><a href="#pareto-chart" id="toc-pareto-chart" class="nav-link" data-scroll-target="#pareto-chart">Pareto Chart</a></li>
+  <li><a href="#driver-diagram" id="toc-driver-diagram" class="nav-link" data-scroll-target="#driver-diagram">Driver Diagram</a></li>
+  <li><a href="#run-chart" id="toc-run-chart" class="nav-link" data-scroll-target="#run-chart">Run Chart</a></li>
   </ul>
 </nav>
     </div>
@@ -185,13 +185,114 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="setting" class="level1">
+<h1>Setting</h1>
+<p>This case study describes the process of a vascular surgery practice to improve operational, financial, and clinical outcomes by reducing length of hospital stay. The practice is affiliated with an urban academic hospital centre with shared operating rooms and hospital beds with other specialties. An audit by the medical centre has demonstrated a disproportionately longer length of hospital stay in patients that underwent open lower-extremity revascularization. This has led to complaints from other specialties and patients due to cancellation and postponement of elective surgeries.</p>
+<p>The problem was confirmed by a systems survey and patient reports and the approach to quality improvement was developed using the Plan-Do-Study-Act cycle as described previously. The samples of data analysis methods presented in this case study are meant to be examples and the quality improvement process will vary depending on the practice. The case study will describe the process of using the case to use the cause and effect diagram, Pareto chart, driver diagram, and run chart to identify problems, support improvements, and monitor progress.</p>
+</section>
 <section id="problem" class="level1">
 <h1>Problem</h1>
-<p>—DESCRIBE THE PROBLEM STATEMENT HERE—</p>
+<p>The length of hospital stay following open lower-extremity revascularization is longer than expected undermining the quality of patient care and hospital operations.</p>
 </section>
-<section id="examples-of-relevant-measures" class="level1">
-<h1>Examples of Relevant Measures</h1>
-<p>–DESCRIBE HOW THEY WOULD SELECT THEIR MEASURES–</p>
+<section id="cause-and-effect-diagram" class="level1">
+<h1>Cause and Effect Diagram</h1>
+<p>The practice manager was informed of the prolonged length of hospital stay from the hospital centre’s audit and based on other staff and patients’ complaints. To identify and confirm the problem, the manager completed a review of administrative records and consulted multiple stakeholders including patients and their families, most responsible care service, allied members of the care team (nurses, social workers, care managers), and administration. The stakeholder group were consulted to identify key causes leading to prolonged hospitalization related to materials, methods, people, environment, and equipment.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"SixSigma"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>effect <span class="ot">&lt;-</span> <span class="st">"Longer Length of Stay"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>causes.gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Materials"</span>, <span class="st">"Methods"</span>, <span class="st">"Equipment"</span>, <span class="st">"Environment"</span>, <span class="st">"People"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>causes <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"list"</span>, <span class="at">length =</span> <span class="fu">length</span>(causes.gr))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Unavailable Equipment"</span>, <span class="st">"Delayed Transportation"</span>, <span class="st">"Incomplete Orders"</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Lack of Streamlined Clinical Pathway"</span>, <span class="st">"Delayed Coordination of Discharge"</span>))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Insufficient Home Supplies"</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Missed Discharge Information"</span>, <span class="st">"Missed Discharge Rounds"</span>, <span class="st">"Team Coordination"</span>))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Missing Physician Order"</span>, <span class="st">"Heavy Workload"</span>, <span class="st">"Limtied Personnel"</span>))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ss.ceDiag</span>(effect, causes.gr, causes, <span class="at">sub =</span> <span class="st">"Possible Causes for Increased Length of Stay Following Lower-Extremity Revascularization"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cs-readmit_files/figure-html/cause and effect-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="pareto-chart" class="level1">
+<h1>Pareto Chart</h1>
+<p>From the cause and effect diagram, the group identified major factors including lack of a streamlined clinical pathway on the electronic medical records, missing physician orders, lack of routine discharge rounds, exacerbation of comorbidities, delayed transportation, and missing home equipment.</p>
+<p>A chart review and a systems survey were conducted to identify the frequency of the delay type in patients experiencing prolonged hospitalization. The “vital few” delay types that had the largest contribution to delayed discharge included lack of clinical pathway, missing physician orders, and lack of routine discharge rounds.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"qcc"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>frequency <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">25</span>, <span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">2</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(frequency) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'Clinial Pathway'</span>, <span class="st">'Physician Orders'</span>, <span class="st">'Discharge Rounds'</span>, <span class="st">'Clinical Exacerbation'</span>, <span class="st">'Transportation'</span>, <span class="st">'Home Equipment'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">pareto.chart</span>(frequency,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">main =</span> <span class="st">'Pareto Chart'</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">col=</span><span class="fu">heat.colors</span>(<span class="fu">length</span>(frequency)),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">las =</span> <span class="dv">2</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cs-readmit_files/figure-html/pareto-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                       
+Pareto chart analysis for frequency
+                        Frequency Cum.Freq. Percentage Cum.Percent.
+  Clinial Pathway              50        50         50           50
+  Physician Orders             25        75         25           75
+  Discharge Rounds             10        85         10           85
+  Clinical Exacerbation         8        93          8           93
+  Transportation                5        98          5           98
+  Home Equipment                2       100          2          100</code></pre>
+</div>
+</div>
+</section>
+<section id="driver-diagram" class="level1">
+<h1>Driver Diagram</h1>
+<p>The “vital few” delay types were useful in identifying the primary and associated secondary drivers. The practice manager consulted the stakeholder group to design the interventions to test each secondary driver. Each stakeholder provided valuable input into the details of the intervention.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DiagrammeR)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>DiagrammeR<span class="sc">::</span><span class="fu">grViz</span>(<span class="st">"digraph {</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">graph [layout = dot, rankdir = LR]</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">node [shape = rectangle, style = filled]</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">aim [label = 'Reduction of LOS']</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">pd1 [label = 'Delayed Discharge Planning']</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">pd2 [label = 'Delayed Postoperative Care']</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">sd1 [label = 'Delay in Recognizing Discharge Needs']</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="st">sd2 [label = 'Missing Physician Orders']</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="st">sd3 [label = 'Exacerbation of Comorbidities']</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">sd4 [label = 'Delayed Postoperative Tests and Consultations']</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="st">ci1 [label = 'Implementation of Clinical Pathway on Electronic Medical Records']</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="st">ci2 [label = 'Daily Discharge Rounds to Coordinate with Discharge Case Manager']</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="st">ci3 [label = 'Inclusion of Preoperative Consultation Recommendations in Task Items']</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="st">ci4 [label = 'Implement Streamlined Consultation and Diagnostic Test Requests as Postoperative Pathway']</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="st">aim -&gt; {pd1 pd2}</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="st">pd1 -&gt; {sd1 sd2}</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="st">pd2 -&gt; {sd3 sd4}</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="st">sd1 -&gt; ci1</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="st">sd2 -&gt; ci2</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="st">sd3 -&gt; ci3</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="st">sd4 -&gt; ci4</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-3997972f9e7dc2c70c6c" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-3997972f9e7dc2c70c6c">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\nnode [shape = rectangle, style = filled]\n\naim [label = \"Reduction of LOS\"]\npd1 [label = \"Delayed Discharge Planning\"]\npd2 [label = \"Delayed Postoperative Care\"]\nsd1 [label = \"Delay in Recognizing Discharge Needs\"]\nsd2 [label = \"Missing Physician Orders\"]\nsd3 [label = \"Exacerbation of Comorbidities\"]\nsd4 [label = \"Delayed Postoperative Tests and Consultations\"]\nci1 [label = \"Implementation of Clinical Pathway on Electronic Medical Records\"]\nci2 [label = \"Daily Discharge Rounds to Coordinate with Discharge Case Manager\"]\nci3 [label = \"Inclusion of Preoperative Consultation Recommendations in Task Items\"]\nci4 [label = \"Implement Streamlined Consultation and Diagnostic Test Requests as Postoperative Pathway\"]\n\naim -> {pd1 pd2}\npd1 -> {sd1 sd2}\npd2 -> {sd3 sd4}\nsd1 -> ci1\nsd2 -> ci2\nsd3 -> ci3\nsd4 -> ci4\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="run-chart" class="level1">
+<h1>Run Chart</h1>
+<p>Following the implementation of an intervention/change idea, the practice manager reviewed the charts of patients that underwent open lower-extremity revascularization. The practice manager and the stakeholder group established targets of early discharge defined as discharge within 5 days postoperatively. The data on proportion of early discharge 6 months prior to the intervention were collected to evaluate the baseline performance. Following consultation with the stakeholder group, the outcome and process measures were selected including length of stay, cost, discharge summary completion within 5 days, and balancing measure including readmission was considered as a potential consequence of early discharge.</p>
 <table class="table">
 <colgroup>
 <col style="width: 27%">
@@ -248,241 +349,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</section>
-<section id="cause-and-effect-diagram" class="level1">
-<h1><strong>Cause and Effect Diagram</strong></h1>
-<p>–DESCRIBE HOW YOU GET THE DATA FOR A CAUSE AND EFFECT DIAGRAM–</p>
+<p>The data on proportion of early discharges were collected monthly from administrative and clinical records and plotted on the run chart to assess for improvements and monitor progress. The first intervention led to an improved outcome and the implementation and the process of the intervention were reassessed and further improved based on stakeholder feedback. Following additional modifications to the initial intervention, the practice saw a greater improvement in the proportion of early discharge</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"SixSigma"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>effect <span class="ot">&lt;-</span> <span class="st">"Reduced Length of Stay"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>causes.gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Materials"</span>, <span class="st">"Methods"</span>, <span class="st">"Equipment"</span>, <span class="st">"Environment"</span>, <span class="st">"People"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>causes <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"list"</span>, <span class="at">length =</span> <span class="fu">length</span>(causes.gr))</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Unavailable Home Equipment"</span>, <span class="st">"Delayed Transportation"</span>, <span class="st">"Incomplete Orders"</span>))</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Lack of Streamlined Clinical Pathway"</span>, <span class="st">"Insufficient Number of Personnel"</span>, <span class="st">"Delayed Coordination of Discharge"</span>))</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Insufficient Home Supplies"</span>, <span class="st">"Pager Malfunction"</span>))</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Missed or Inaccurate Information"</span>, <span class="st">"Inconsistent Discharge Rounds"</span>, <span class="st">"Inadequate Team Coordination"</span>))</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>causes[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Missing or Illegible Physician Order"</span>, <span class="st">"Heavy Workload for Discharge Cases"</span>, <span class="st">"Unavailable or Conflicting Work Times"</span>))</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ss.ceDiag</span>(effect, causes.gr, causes, <span class="at">sub =</span> <span class="st">"Reduction of Length of Stay Following Lower-Extremity Revascularization"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"qicharts2"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">24</span>, <span class="dv">28</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">38</span>, <span class="dv">37</span>, <span class="dv">40</span>, <span class="dv">38</span>, <span class="dv">40</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">57</span>, <span class="dv">55</span>, <span class="dv">50</span>, <span class="dv">57</span>, <span class="dv">52</span>, <span class="dv">54</span>, <span class="dv">51</span>, <span class="dv">52</span>, <span class="dv">53</span>, <span class="dv">52</span>, <span class="dv">50</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">"2023/01/01"</span>),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">as.Date</span>(<span class="st">"2023/12/31"</span>),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">"months"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>notes <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>notes[<span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="st">"Intervention"</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">qic</span> (y, </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>     n,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> date,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Proportion of Early Discharge"</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Month"</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">notes =</span> notes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cs-readmit_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="pareto-chart" class="level1">
-<h1><strong>Pareto Chart</strong></h1>
-<p>–DESCRIBE HOW THEY WOULD GET THE DATA FOR THE PARETO CHART</p>
-<table class="table">
-<colgroup>
-<col style="width: 77%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 6%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Delay Type</th>
-<th>Count</th>
-<th>%</th>
-<th>Cum%</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Delay in securing transportation to or placement in planned discharge disposition</td>
-<td>76</td>
-<td>46</td>
-<td>46</td>
-</tr>
-<tr class="even">
-<td>Delay in coordinating discharge planning with allied healthcare workers, patient, patient’s family</td>
-<td>33</td>
-<td>20</td>
-<td>66</td>
-</tr>
-<tr class="odd">
-<td>Delay in receiving services or equipment for discharge</td>
-<td>24</td>
-<td>14</td>
-<td>80</td>
-</tr>
-<tr class="even">
-<td>Delay in recognizing discharge needs</td>
-<td>17</td>
-<td>10</td>
-<td>90</td>
-</tr>
-<tr class="odd">
-<td>Delay in diagnostic tests or consultation service</td>
-<td>10</td>
-<td>6</td>
-<td>96</td>
-</tr>
-<tr class="even">
-<td>Completion or exacerbation of comorbidities</td>
-<td>5</td>
-<td>4</td>
-<td>100</td>
-</tr>
-<tr class="odd">
-<td><strong>Total</strong></td>
-<td><strong>165</strong></td>
-<td><strong>100</strong></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I changed the code in the data vis tutorial.  Take a look at the changes I made and see if you agree with them.  We should use the same code but just change the numbers</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"qcc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Package 'qcc' version 2.7</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Type 'citation("qcc")' for citing this R package in publications.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">delay.type=</span><span class="fu">c</span>(<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>, <span class="st">'E'</span>, <span class="st">'F'</span>))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>frequency <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">76</span>, <span class="dv">33</span>, <span class="dv">24</span>, <span class="dv">17</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  delay.type frequency
-1          A        76
-2          B        33
-3          C        24
-4          D        17
-5          E        10
-6          F         5</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pareto.chart</span>(df<span class="sc">$</span>frequency,</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">main=</span><span class="st">'Pareto Chart'</span>,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">xlab=</span><span class="st">'Delay Type'</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">col=</span><span class="fu">heat.colors</span>(<span class="fu">length</span>(df<span class="sc">$</span>frequency))</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="cs-readmit_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   
-Pareto chart analysis for df$frequency
-     Frequency  Cum.Freq. Percentage Cum.Percent.
-  A  76.000000  76.000000  46.060606    46.060606
-  B  33.000000 109.000000  20.000000    66.060606
-  C  24.000000 133.000000  14.545455    80.606061
-  D  17.000000 150.000000  10.303030    90.909091
-  E  10.000000 160.000000   6.060606    96.969697
-  F   5.000000 165.000000   3.030303   100.000000</code></pre>
-</div>
-</div>
-</section>
-<section id="driver-diagram" class="level1">
-<h1><strong>Driver Diagram</strong></h1>
-<p>–DESCRIBE HOW TO TAKE THE DATA FROM THE PARETO CHART AND ORGANIZE INTO A DRIVER DIAGRAM–</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DiagrammeR)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>DiagrammeR<span class="sc">::</span><span class="fu">grViz</span>(<span class="st">"digraph {</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="st">graph [layout = dot, rankdir = LR]</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="st"># define the global styles of the nodes. We can override these in box if we wish</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="st">node [shape = rectangle, style = filled, fillcolor = Linen]</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="st">aim [label = 'Reduce length </span><span class="sc">\n</span><span class="st"> </span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="st">              of hospital stay to &lt; 7 days </span><span class="sc">\n</span><span class="st"> </span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="st">              following lower-extremity </span><span class="sc">\n</span><span class="st"> </span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="st">              revascularization']</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="st">pd1 [label = 'Delay in Postoperative Care']</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="st">pd2 [label = 'Delay in Discharge Planning']</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="st">sd1 [label = 'Exacerbation of comorbidities </span><span class="sc">\n</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="st">              extending hospitalization']</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="st">sd2 [label = 'Delay in obtaining diagnostic </span><span class="sc">\n</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="st">              tests or consultation service </span><span class="sc">\n</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="st">              postoperatively']</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="st">sd3 [label = 'Delay in recognizing </span><span class="sc">\n</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="st">              discharge needs']</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="st">sd4 [label = 'Delay in receiving services or </span><span class="sc">\n</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="st">              equipment necessary for discharge']</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="st">sd5 [label = 'Delay in securing transport or </span><span class="sc">\n</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="st">              placement in planned discharge disposition']</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="st">ci1 [label = 'Include and follow form on </span><span class="sc">\n</span></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="st">              optimization and postoperative </span><span class="sc">\n</span></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="st">              care as per preoperative consultation']</span></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="st">ci2 [label = 'Coordinate with team of </span><span class="sc">\n</span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="st">              specialists and communicate </span><span class="sc">\n</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="st">              with technicians on postoperative </span><span class="sc">\n</span></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="st">              day one to obtain necessary </span><span class="sc">\n</span></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a><span class="st">              consultations and tests </span><span class="sc">\n</span></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a><span class="st">              prior to discharge']</span></span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="st">ci3 [label = 'Coordinate with multidisciplianry </span><span class="sc">\n</span></span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="st">              team during rounds on medication review, </span><span class="sc">\n</span></span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="st">              family meetings, home environment assessment, </span><span class="sc">\n</span></span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a><span class="st">              and discharge referrals']</span></span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="st">ci4 [label = 'Coordinate with nursing and </span><span class="sc">\n</span></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="st">              discharge case managers during rounds']</span></span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="st">ci5 [label = 'Coordinate with discharge case </span><span class="sc">\n</span></span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="st">              managers and family members or </span><span class="sc">\n</span></span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="st">              guardians during rounds']</span></span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="st"># edge definitions with the node IDs</span></span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a><span class="st">aim -&gt; {pd1 pd2}</span></span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a><span class="st">pd1 -&gt; {sd1 sd2}</span></span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a><span class="st">pd2 -&gt; {sd3 sd4 sd5}</span></span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a><span class="st">sd1 -&gt; ci1</span></span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a><span class="st">sd2 -&gt; ci2</span></span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a><span class="st">sd3 -&gt; ci3</span></span>
-<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a><span class="st">sd4 -&gt; ci4</span></span>
-<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a><span class="st">sd5 -&gt; ci5</span></span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-2e451ab1bf2e3a521eba" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-2e451ab1bf2e3a521eba">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\naim [label = \"Reduce length \n \n              of hospital stay to < 7 days \n \n              following lower-extremity \n \n              revascularization\"]\npd1 [label = \"Delay in Postoperative Care\"]\npd2 [label = \"Delay in Discharge Planning\"]\nsd1 [label = \"Exacerbation of comorbidities \n\n              extending hospitalization\"]\nsd2 [label = \"Delay in obtaining diagnostic \n\n              tests or consultation service \n\n              postoperatively\"]\nsd3 [label = \"Delay in recognizing \n\n              discharge needs\"]\nsd4 [label = \"Delay in receiving services or \n\n              equipment necessary for discharge\"]\nsd5 [label = \"Delay in securing transport or \n\n              placement in planned discharge disposition\"]\nci1 [label = \"Include and follow form on \n\n              optimization and postoperative \n\n              care as per preoperative consultation\"]\nci2 [label = \"Coordinate with team of \n\n              specialists and communicate \n\n              with technicians on postoperative \n\n              day one to obtain necessary \n\n              consultations and tests \n\n              prior to discharge\"]\nci3 [label = \"Coordinate with multidisciplianry \n\n              team during rounds on medication review, \n\n              family meetings, home environment assessment, \n\n              and discharge referrals\"]\nci4 [label = \"Coordinate with nursing and \n\n              discharge case managers during rounds\"]\nci5 [label = \"Coordinate with discharge case \n\n              managers and family members or \n\n              guardians during rounds\"]\n\n# edge definitions with the node IDs\naim -> {pd1 pd2}\npd1 -> {sd1 sd2}\npd2 -> {sd3 sd4 sd5}\nsd1 -> ci1\nsd2 -> ci2\nsd3 -> ci3\nsd4 -> ci4\nsd5 -> ci5\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
-<section id="run-chart" class="level1">
-<h1><strong>Run Chart</strong></h1>
-<p>—DESCRIBE HOW AND WHEN THEY WOULD USE THE RUN CHART—</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"qicharts2"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># I think we should change this to put in the data manually based on how it was collected.  We could even show how to manipulate and summarize the raw patient level data.</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rbinom</span> (<span class="dv">12</span>, <span class="dv">20</span>, <span class="fl">0.5</span>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">sample</span> (<span class="dv">16</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">12</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">"2023/01/01"</span>),</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>            <span class="fu">as.Date</span>(<span class="st">"2023/12/31"</span>),</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">"months"</span>)</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "2023-01-01" "2023-02-01" "2023-03-01" "2023-04-01" "2023-05-01"
- [6] "2023-06-01" "2023-07-01" "2023-08-01" "2023-09-01" "2023-10-01"
-[11] "2023-11-01" "2023-12-01"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>notes <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>notes[<span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="st">"Intervention"</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">qic</span> (y, </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>     n,</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> date,</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Proportion of Early Discharges"</span>,</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Month"</span>,</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">notes =</span> notes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="cs-readmit_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="cs-readmit_files/figure-html/run chart-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

@@ -351,7 +351,7 @@ Pareto chart analysis for frequency
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">graph [layout = dot, rankdir = LR]</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st"># define the global styles of the nodes. We can override these in box if we wish</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">node [shape = rectangle, style = filled, fillcolor = Linen]</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">node [shape = rectangle, style = filled]</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">aim [label = 'Aim']</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">pd1 [label = 'Primary Driver #1']</span></span>
@@ -378,8 +378,8 @@ Pareto chart analysis for frequency
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="st">sd5 -&gt; ci5</span></span>
 <span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-1deb8190aa1d55479af2" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-1deb8190aa1d55479af2">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled, fillcolor = Linen]\n\naim [label = \"Aim\"]\npd1 [label = \"Primary Driver #1\"]\npd2 [label = \"Primary Driver #2\"]\nsd1 [label = \"Secondary Driver #1.1\"]\nsd2 [label = \"Secondary Driver #1.2\"]\nsd3 [label = \"Secondary Driver #2.1\"]\nsd4 [label = \"Secondary Driver #2.2\"]\nsd5 [label = \"Secondary Driver #2.3\"]\nci1 [label = \"Change Idea #1.1\"]\nci2 [label = \"Change Idea #1.2\"]\nci3 [label = \"Change Idea #2.1\"]\nci4 [label = \"Change Idea #2.2\"]\nci5 [label = \"Change Idea #2.3\"]\n\n# edge definitions with the node IDs\naim -> {pd1 pd2}\npd1 -> {sd1 sd2}\npd2 -> {sd3 sd4 sd5}\nsd1 -> ci1\nsd2 -> ci2\nsd3 -> ci3\nsd4 -> ci4\nsd5 -> ci5\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-83b07ee05634440d44ff" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-83b07ee05634440d44ff">{"x":{"diagram":"digraph {\n\ngraph [layout = dot, rankdir = LR]\n\n# define the global styles of the nodes. We can override these in box if we wish\nnode [shape = rectangle, style = filled]\n\naim [label = \"Aim\"]\npd1 [label = \"Primary Driver #1\"]\npd2 [label = \"Primary Driver #2\"]\nsd1 [label = \"Secondary Driver #1.1\"]\nsd2 [label = \"Secondary Driver #1.2\"]\nsd3 [label = \"Secondary Driver #2.1\"]\nsd4 [label = \"Secondary Driver #2.2\"]\nsd5 [label = \"Secondary Driver #2.3\"]\nci1 [label = \"Change Idea #1.1\"]\nci2 [label = \"Change Idea #1.2\"]\nci3 [label = \"Change Idea #2.1\"]\nci4 [label = \"Change Idea #2.2\"]\nci5 [label = \"Change Idea #2.3\"]\n\n# edge definitions with the node IDs\naim -> {pd1 pd2}\npd1 -> {sd1 sd2}\npd2 -> {sd3 sd4 sd5}\nsd1 -> ci1\nsd2 -> ci2\nsd3 -> ci3\nsd4 -> ci4\nsd5 -> ci5\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -393,7 +393,7 @@ Pareto chart analysis for frequency
 <section id="background-for-measure-3" class="level2">
 <h2 class="anchored" data-anchor-id="background-for-measure-3">Background for measure</h2>
 <p>A run chart is a graph that depicts data values over time with a horizontal median line dividing the data in half above and below the median value. It provides an overview of the performance of a process and identifies trends and variations in the data as a result of the quality improvement intervention.</p>
-<p>The dataset for a run chart can be created in table format with independent variable including unit of time or quarters at which the values were collected and dependent variable including unit value or percentage.</p>
+<p>The dataset for a run chart can be created in table format with independent variable including unit of time or quarters at which the values were collected and dependent variable including unit value or percentage. There are many ways this chart can be displayed as a control chart or split chart to demonstrate special cause variation and whether that correlates with the intervention you manipulated. All QI happens over time and in the real world, so traditional statistical before and after tests are not ideal for demonstrating change. Use a run chart instead!</p>
 </section>
 <section id="instructions-3" class="level2">
 <h2 class="anchored" data-anchor-id="instructions-3">Instructions</h2>
